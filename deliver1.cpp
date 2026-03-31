@@ -1,7 +1,7 @@
 /*There is 1 tenant, 1 safe deposit box which can hold 8 letters (1 byte = 8 bits) and you are the mailman (CPU).
 The tenant wants you to store there letters in the mailbox.
 
-Create a program that stores 8 letters (1 package)*/
+Create a program that stores a letter*/
 
 #include <iostream>
 
@@ -9,7 +9,8 @@ using namespace std;
 
 int main() {
 
-    unsigned char package1 = 'A'; // 1 char = 1 byte = 8 bits
+    char package1 = 'A'; // 1 char = 1 byte = 8 bits
+    char &package = package1;
 
     short int package2 = 2; // 1 short int = 2 bytes = 16 bits
     
@@ -19,6 +20,8 @@ int main() {
 
     cout << package1 << endl;
     cout << "The size of package 1 is " << sizeof(package1) << endl; // gives the size in bytes
+
+    cout << "The size of reference package 1 is " << sizeof(&package) << endl;
 
     cout << package2 << endl;
     cout << "The size of package 2 is " << sizeof(package2) << endl; 
