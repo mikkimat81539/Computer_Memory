@@ -27,6 +27,7 @@ class Slot {
         remaining = credit - bet; // remove bet from credit
     }
 
+    // Method
     int randomReel(){
         // Randomize each reel
         srand(time(0));
@@ -35,13 +36,27 @@ class Slot {
         int randomNum3 = rand() % 10;
         int combination[3] = {randomNum1, randomNum2, randomNum3};
 
+
         for(int i : combination){
             cout << i << " ";
         }
-        
+
+
+        bool isEqual = equal(begin(payline), end(payline), begin(combination));
+
         cout << "\n" << endl;
 
+        if (isEqual) {
+            cout << "You win" << endl;
+            return credit + 100;
+        }
+        else {
+            cout << "You lose" << endl;
+            return credit - 50;
+        }
+        
         return 0;
+
     }
 
     // GETTER Method
