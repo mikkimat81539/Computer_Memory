@@ -4,6 +4,7 @@ use encapsulation*/
 
 #include <iostream>
 #include <ctime>
+#include <string>
 
 using namespace std;
 
@@ -27,7 +28,7 @@ class Slot {
         remaining = credit - bet; // remove bet from credit
     }
 
-    // Method
+    // Methods
     int randomReel(){
         // Randomize each reel
         srand(time(0));
@@ -52,7 +53,6 @@ class Slot {
         }
         else {
             cout << "You lose" << endl;
-            return credit - 50;
         }
         
         return 0;
@@ -64,13 +64,40 @@ class Slot {
         return remaining;
     }
 
+
 };
 
-int main() {
-    Slot play(20);
-    cout << "You have $" << play.getRemaining() << " remaining in credit." << endl;
 
-    cout << play.randomReel() << endl;
+int main() {
+    while (true){
+        cout << "How much would you like to bet: ";
+        int betInput;
+        cin >> betInput;
+
+        Slot play(betInput);
+
+        cout << "You have $" << play.getRemaining() << " remaining in credit." << endl;
+
+        cout << play.randomReel() << endl;
+
+        cout << "Do you want to keep playing yes or no: ";
+
+        string playInput;
+
+        cin >> playInput;
+
+        if (playInput == "yes") {
+            continue;
+        }
+
+        else if (playInput == "no") {
+            break;
+        }
+
+        else {
+            cout << "Not a valid input" << endl;
+        }
+    }
 
     return 0;
 }
